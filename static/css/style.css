@@ -1,0 +1,214 @@
+/* ================================== 公共样式（所有页面通用）================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    background-color: #f5f7fa; /* 全局背景色 */
+    color: #333;
+    line-height: 1.8;
+}
+
+/* 容器：所有页面内容都包裹在这个类里，实现居中 */
+.container {
+    max-width: 1000px;
+    margin: 50px auto; /* 上下留白50px，左右自动居中 */
+    padding: 30px 50px;
+    background-color: white; /* 白色卡片 */
+    border-radius: 15px; /* 圆角 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* 立体感阴影 */
+}
+
+/* 公共标题样式（h1/h2） */
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #3498db; /* 蓝色下划线 */
+    font-size: 2rem;
+}
+
+h2 {
+    color: #3498db;
+    margin: 30px 0 15px;
+    font-size: 1.5rem;
+}
+
+/* 公共链接样式 */
+a {
+    text-decoration: none;
+    transition: all 0.3s; /* 所有链接统一过渡动画 */
+}
+
+/* 公共按钮样式（返回首页、提交按钮等） */
+.btn {
+    display: inline-block;
+    color: white;
+    background-color: #3498db;
+    padding: 10px 25px;
+    border-radius: 30px; /* 圆形按钮 */
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #2980b9; /* 悬停加深蓝色 */
+    transform: scale(1.05); /* 轻微放大 */
+}
+
+/* 导航栏样式（首页专用，但放在公共CSS里统一管理） */
+.nav {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.nav a {
+    display: inline-block;
+    color: #2c3e50;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+
+.nav a:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+/* ================================== 各页面专属样式（按页面分类）================================== */
+/* 1. 首页专属样式 */
+.img-box {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.img-box img {
+    width: 600px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.img-box p {
+    text-indent: 0;
+    color: #888;
+    margin-top: 10px;
+}
+
+/* 2. 个人信息页（通用）专属样式 */
+.info-list {
+    margin: 30px 0;
+    padding-left: 20px;
+}
+
+.info-list li {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    list-style-type: none;
+    position: relative;
+    padding-left: 30px;
+}
+
+.info-list li::before {
+    content: "•";
+    color: #3498db;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -5px;
+}
+
+/* 3. 杨郁龙个人页专属样式 */
+.hobby-section {
+    margin: 40px 0;
+}
+
+.hobby-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.tag {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 1rem;
+}
+
+.tag:hover {
+    background-color: #3498db;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.skills-section {
+    margin: 40px 0;
+}
+
+.skill-bar {
+    margin: 15px 0;
+}
+
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.bar {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #3498db;
+    border-radius: 5px;
+}
+
+.footer {
+    text-align: center;
+    margin: 40px 0 20px;
+    padding-top: 20px;
+    border-top: 1px dashed #ddd;
+}
+
+.footer p {
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* 4. 计算器页面专属样式 */
+.form-box {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.result {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #27ae60;
+    margin: 20px 0;
+    font-weight: bold;
+}

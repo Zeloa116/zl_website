@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息页</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <style>
+        /* 新增：让内容和表情包并排显示 */
+        .content-wrapper {
+            display: flex; /* 横向排列 */
+            align-items: center; /* 垂直居中对齐 */
+            gap: 30px; /* 文字和图片的间距 */
+        }
+        .funny-img {
+            width: 150px; /* 表情包宽度 */
+            height: auto;
+            border-radius: 10px; /* 圆角 */
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>个人信息展示</h1>
+
+        <!-- 新增：用 wrapper 包裹文字和表情包 -->
+        <div class="content-wrapper">
+            <div class="info">
+                <p>你好，<strong>{{ name }}</strong>！</p>
+                <p>你的年龄是：<strong>{{ age }}</strong> 岁</p>
+                <p>已成功通过 URL 路由传递参数并显示～</p>
+            </div>
+
+            <!-- 新增：搞怪表情包 -->
+            <div>
+                <img src="/static/images/cat.jpeg" class="funny-img" alt="破忒头美照" width="100">
+                <p>This is Potato</p>
+            </div>
+        </div>
+
+        <a href="/">返回首页</a>
+    </div>
+</body>
+</html>

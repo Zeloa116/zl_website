@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>简单加法计算器</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>简单加法计算器（数据永久保存）</h1>
+
+        <!-- 累计计算次数 -->
+        <div style="text-align: right; color: #666; margin-bottom: 20px;">
+            累计计算次数：<strong>{{ count }}</strong> 次
+        </div>
+
+        <!-- 计算表单 -->
+        <div class="form-box">
+            <form action="/calculate" method="get">
+                数字1：<input type="number" name="num1" required>
+                数字2：<input type="number" name="num2" required>
+                <button type="submit" class="btn">计算结果</button>
+            </form>
+
+            <!-- 当前结果 -->
+            {% if result %}
+                <div class="result">{{ num1 }} + {{ num2 }} = {{ result }}</div>
+            {% endif %}
+        </div>
+
+        <!-- 计算历史（显示时间+计算内容） -->
+        <div style="margin-top: 40px;">
+            <h2>计算历史记录</h2>
+            {% if history %}
+                <ul class="info-list">
+                    {% for item in history %}
+                        <!-- item 是 Calculation 模型实例，直接访问属性（num1、created_at 等） -->
+                        <li>
+                            {{ item.num1 }} + {{ item.num2 }} = {{ item.result }}
+                            <span style="color: #888; font-size: 0.9rem; margin-left: 20px;">
+                                {{ item.created_at.strftime('%Y-%m-%d %H:%M:%S') }}  <!-- 格式化时间 -->
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p style="color: #666;">暂无计算记录，快去计算吧～</p>
+            {% endif %}
+        </div>
+
+        <a href="/" class="btn" style="margin-top: 20px; display: block; text-align: center;">返回首页</a>
+    </div>
+</body>
+</html>
