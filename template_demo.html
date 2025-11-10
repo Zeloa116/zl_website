@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>模板演示页</title>
+    <!-- 新增：引入统一 CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- 删掉原来的 <style> 标签 -->
+</head>
+<body>
+    <div class="container">
+        <h1>Flask 模板动态演示</h1>
+        <div class="demo">
+            <p>欢迎你，<strong>{{ username }}</strong>！</p>
+            <p>这是后端传递的动态随机数：</p>
+            <div class="random-num">{{ random_num }}</div>
+            <p>刷新页面会生成新的随机数～</p>
+        </div>
+        <a href="/">返回首页</a>
+    </div>
+</body>
+</html>
