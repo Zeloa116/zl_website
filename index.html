@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>我的 Flask 网站 - 首页</title>
+    <!-- 新增：引入统一 CSS 文件（路径是 /static/css/style.css，前面必须加 /） -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <!-- 所有内容包裹在 .container 类里（新增这个 div） -->
+    <div class="container">
+        <h1>杨郁龙的 Flask 网站</h1>
+
+        <!-- 导航链接 -->
+        <div class="nav">
+            <a href="/">首页</a>
+            <a href="/yyl">杨郁龙的个人页</a>
+            <a href="/user/小明/20">别人信息页</a>
+            <a href="/template">模板演示页</a>
+            <a href="/calculator2">加法计算器</a>
+        </div>
+
+        <!-- 首页内容 -->
+        <h2>关于这个网站</h2>
+        <p>这是用杨郁龙东拼西凑的第一个网站</p>
+        <p>～～～你好～～～</p>
+        <p>小猫好奇</p>
+
+       <!-- 修改后：用自己的图片 -->
+        <div class="img-box">
+            <!-- 路径格式：/static/images/你的图片文件名 -->
+            <img src="/static/images/xiaohei1.png" alt="我的图片" width="100">
+        </div>
+
+        <h2>功能介绍</h2>
+        <p>1. 个人信息页：这里是我的信息</p>
+        <p>2. 别人信息页：这里是别人的信息。（你可以试着在网址中修改自己的名字和年龄哦）</p>
+        <p>3. 模板演示页：每次有一个随机的数字</p>
+        <p>3. 加法计算器：用户输入数字，后端计算后返回结果，支持交互。支持记录数据</p>
+
+        <div class="img-box">
+            <img src="https://picsum.photos/800/400" alt="网站配图">
+            <p style="text-indent: 0; color: #888;">随机风景图</p>
+        </div>
+    </div>
+</body>
+</html>
