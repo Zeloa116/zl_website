@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>简单加法计算器（前端版）</title>
+    <!-- 注意：路径还是相对路径 -->
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>简单加法计算器（支持记录）</h1>
+
+        <!-- 累计计算次数（JS 动态填充） -->
+        <div style="text-align: right; color: #666; margin-bottom: 20px;">
+            累计计算次数：<strong id="calcCount">0</strong> 次
+        </div>
+
+        <!-- 计算表单：去掉 action 和 method，用 JS 处理提交 -->
+        <div class="form-box">
+            <form id="calcForm">
+                数字1：<input type="number" id="num1" required>
+                数字2：<input type="number" id="num2" required>
+                <button type="submit" class="btn">计算结果</button>
+            </form>
+
+            <!-- 当前结果（JS 动态填充） -->
+            <div class="result" id="calcResult"></div>
+        </div>
+
+        <!-- 计算历史（JS 动态填充） -->
+        <div style="margin-top: 40px;">
+            <h2>计算历史记录</h2>
+            <div id="calcHistory">
+                <p style="color: #666;">暂无计算记录，快去计算吧～</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="btn" style="margin-top: 20px; display: block; text-align: center;">返回首页</a>
+    </div>
+
+    <!-- 新增：JS 逻辑（实现计算、记录、存储） -->
+    <script>
+        // 1. 从本地存储获取历史记录（没有则初始化空数组）
+        function getHistory() {
+            const history = localStorage.getItem('calcHistory');
+            return history ? JSON.parse(history) : [];
+        }
+
+        // 2. 保存记录到本地存储
+        function saveHistory(record) {
+            const history = getHistory();
+            history.unshift(record); // 新增记录放在最前面（最新的在顶部）
+            localStorage.setItem('calcHistory', JSON.stringify(history));
+        }
+
+        // 3. 更新页面显示（次数+历史记录）
+        function updatePage() {
+            const history = getHistory();
+            const countElement = document.getElementById('calcCount');
+            const historyElement = document.getElementById('calcHistory');
+
+            // 更新次数
+            countElement.textContent = history.length;
+
+            // 更新历史记录
+            if (history.length === 0) {
+                historyElement.innerHTML = '<p style="color: #666;">暂无计算记录，快去计算吧～</p>';
+                return;
+            }
+
+            // 生成历史记录列表
+            let historyHTML = '<ul class="info-list">';
+            history.forEach(item => {
+                historyHTML += `<li>${item.num1} + ${item.num2} = ${item.result} 
+                                <span style="color: #888; font-size: 0.9rem;">${item.time}</span></li>`;
+            });
+            historyHTML += '</ul>';
+            historyElement.innerHTML = historyHTML;
+        }
+
+        // 4. 处理表单提交（计算逻辑）
+        document.getElementById('calcForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // 阻止表单默认提交（不用跳转到新页面）
+
+            // 获取输入值
+            const num1 = parseInt(document.getElementById('num1').value);
+            const num2 = parseInt(document.getElementById('num2').value);
+            const result = num1 + num2;
+
+            // 生成当前时间（格式化）
+            const now = new Date();
+            const time = now.toLocaleString('zh-CN'); // 格式：2025/11/12 15:30:20
+
+            // 保存记录到本地存储
+            const record = { num1, num2, result, time };
+            saveHistory(record);
+
+            // 显示当前结果
+            document.getElementById('calcResult').textContent = `${num1} + ${num2} = ${result}`;
+
+            // 更新页面（次数+历史）
+            updatePage();
+
+            // 清空输入框
+            this.reset();
+        });
+
+        // 页面加载时，初始化显示历史记录和次数
+        window.onload = updatePage;
+    </script>
+</body>
+</html>
