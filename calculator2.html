@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>简单加法计算器</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body>
     <div class="container">
         <h1>简单加法计算器</h1>
         <div class="form-box">
-            <form action="/calculate" method="get">
+            <form action="calculate" method="get">
                 数字1：<input type="number" name="num1" required>
                 数字2：<input type="number" name="num2" required>
                 <button type="submit">计算结果</button>
@@ -22,7 +22,7 @@
                 </div>
             {% endif %}
         </div>
-        <a href="/">返回首页</a>
+        <a href="index.html">返回首页</a>
     </div>
 </body>
 </html>
